@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="dark" />
 <link rel="icon" href="data:," />
-<title>Bonne nuit, ma sirène</title>
+<title>Bonne nuit, mon cœur</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,63 +14,54 @@
   html,body{margin:0;min-height:100%}
   body{
     font-family:"Quicksand",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    color:#f2fbff;
+    color:#fdf6ec;
     overflow-x:hidden;
     min-height:100svh;
     position:relative;
-    background:linear-gradient(180deg,#081226 0%, #0a2a4a 30%, #0b3d63 55%, #083a5c 78%, #062a47 100%);
+    background:linear-gradient(180deg,#070d24 0%, #131c42 34%, #2c2a5e 58%, #59386b 82%, #7a4a63 100%);
   }
-  /* stars above the water */
-  .star{position:fixed;border-radius:50%;background:#eaf6ff;pointer-events:none;animation:twinkle var(--d) ease-in-out infinite alternate;z-index:0}
-  @keyframes twinkle{from{opacity:.2}to{opacity:1}}
-  /* light rays under water */
-  .rays{position:fixed;inset:0;pointer-events:none;z-index:0;background:
-    linear-gradient(105deg, transparent 30%, rgba(140,220,255,.07) 42%, transparent 54%),
-    linear-gradient(80deg, transparent 55%, rgba(140,220,255,.05) 66%, transparent 78%);}
-  /* rising bubbles */
-  .bubble{position:fixed;bottom:-40px;border-radius:50%;pointer-events:none;z-index:1;
-    background:radial-gradient(circle at 32% 30%, rgba(255,255,255,.85), rgba(160,225,255,.25) 55%, rgba(160,225,255,.08));
-    border:1px solid rgba(200,240,255,.5);
-    animation:rise var(--t) linear infinite;}
-  @keyframes rise{to{transform:translateY(-108svh) translateX(var(--x))}}
-  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-  @keyframes sway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
-  @keyframes tailSway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
-  @keyframes popFloat{0%{transform:translateY(0) scale(.6);opacity:0}15%{opacity:1}100%{transform:translateY(-130px) translateX(var(--x)) scale(1.15) rotate(var(--r));opacity:0}}
-  @keyframes fallStar{0%{transform:translate(0,0);opacity:0}10%{opacity:1}80%{opacity:1}100%{transform:translate(-46vw,26svh);opacity:0}}
+  .star{position:fixed;border-radius:50%;background:#fff8e6;pointer-events:none;animation:twinkle var(--d) ease-in-out infinite alternate;z-index:0}
+  @keyframes twinkle{from{opacity:.15;transform:scale(.8)}to{opacity:1;transform:scale(1.2)}}
+  .cloud{position:fixed;pointer-events:none;z-index:1;opacity:.5;animation:drift var(--t) linear infinite}
+  @keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(115vw)}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @keyframes popFloat{0%{transform:translateY(0) scale(.6) rotate(0deg);opacity:0}15%{opacity:1}100%{transform:translateY(-150px) translateX(var(--x)) scale(1.15) rotate(var(--r));opacity:0}}
+  @keyframes glint{0%,100%{opacity:0}50%{opacity:1}}
+  @keyframes lampGlow{0%,100%{opacity:.75}50%{opacity:1}}
+  @keyframes fallStar{0%{transform:translate(0,0) rotate(0deg);opacity:0}10%{opacity:1}80%{opacity:1}100%{transform:translate(-52vw,30svh) rotate(-30deg);opacity:0}}
+  @keyframes tailFlick{0%,100%{transform:rotate(0deg)}50%{transform:rotate(6deg)}}
+  .tower-glints circle{opacity:0}
+  .sparkling .tower-glints circle{animation:glint .5s ease-in-out infinite}
+  .tail{transform-origin:0% 100%;animation:tailFlick 4s ease-in-out infinite}
 
   .wrap{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:26px 20px 38px;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-
-  .moon-wrap{animation:floaty 5s ease-in-out infinite;margin-bottom:2px}
-  .kicker{letter-spacing:.18em;text-transform:uppercase;font-size:11px;font-weight:700;color:#9fe8ff;opacity:.95}
-  h1{font-family:"Caveat",cursive;font-size:clamp(54px,13vw,90px);line-height:.92;margin:10px 0 6px;font-weight:700;color:#fff}
-  h1 span{color:#7ef0d4}
-  .subtitle{font-size:clamp(17px,4.4vw,21px);line-height:1.5;color:#d9f4ff;font-weight:500;max-width:500px;margin:0 auto}
+  .kicker{letter-spacing:.2em;text-transform:uppercase;font-size:11px;font-weight:700;color:#ffd9a0;opacity:.95}
+  h1{font-family:"Caveat",cursive;font-size:clamp(56px,13vw,92px);line-height:.92;margin:10px 0 6px;font-weight:700;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.35)}
+  h1 span{color:#ffb3c8}
+  .subtitle{font-size:clamp(17px,4.4vw,21px);line-height:1.5;color:#f3e9ff;font-weight:500;max-width:500px;margin:0 auto}
   .subtitle strong{color:#fff}
 
   .scene{
-    margin-top:24px;width:min(560px,100%);background:rgba(255,255,255,.06);
-    border:1px solid rgba(160,230,255,.22);border-radius:28px;padding:16px 12px 8px;
-    backdrop-filter:blur(6px);box-shadow:0 20px 50px rgba(0,0,0,.35);
+    margin-top:24px;width:min(580px,100%);border-radius:28px;padding:10px 10px 4px;
+    background:linear-gradient(180deg, rgba(10,14,40,.25), rgba(10,10,30,.45));
+    border:1px solid rgba(255,220,170,.25);
+    backdrop-filter:blur(4px);box-shadow:0 24px 60px rgba(0,0,0,.45);
   }
   .scene svg{width:100%;height:auto;display:block}
-  .caption{font-size:14px;color:#bfe9ff;padding:6px 12px 12px;line-height:1.5}
+  .caption{font-size:14px;color:#e8d9ff;padding:4px 12px 12px;line-height:1.5}
   .caption b{color:#ffe9a8}
-  .tail{transform-origin:60% 20%;animation:tailSway 3.8s ease-in-out infinite}
-  .mermaid{transform-origin:50% 60%;animation:sway 5.5s ease-in-out infinite}
-  .jelly{animation:floaty 6s ease-in-out infinite}
 
   .actions{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center}
   button{min-height:48px;border:0;cursor:pointer;border-radius:999px;padding:0 22px;font-family:inherit;font-weight:700;font-size:16px}
-  .primary{background:#7ef0d4;color:#06382c;box-shadow:0 8px 24px rgba(126,240,212,.35)}
+  .primary{background:linear-gradient(135deg,#ffd166,#ffb3c8);color:#4a1430;box-shadow:0 8px 26px rgba(255,179,200,.4)}
   .primary:active{transform:scale(.97)}
-  .ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
-  .note{margin-top:18px;font-family:"Caveat",cursive;font-size:26px;color:#ffe9c2;line-height:1.25;min-height:34px}
-  .small{margin-top:20px;font-size:13px;color:#8fc3dd;line-height:1.5}
+  .ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+  .note{margin-top:18px;font-family:"Caveat",cursive;font-size:27px;color:#ffe9c2;line-height:1.25;min-height:36px}
+  .small{margin-top:20px;font-size:13px;color:#c3b2dd;line-height:1.5}
 
   #pops{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
-  .pop{position:absolute;bottom:24%;animation:popFloat 2.3s ease-out forwards}
-  .shooting{position:fixed;top:6%;right:-4%;font-size:26px;z-index:4;pointer-events:none;animation:fallStar 1.6s ease-in forwards}
+  .pop{position:absolute;bottom:22%;animation:popFloat 2.4s ease-out forwards;text-shadow:0 0 14px rgba(255,180,200,.8)}
+  .shooting{position:fixed;top:5%;right:-4%;font-size:26px;z-index:4;pointer-events:none;animation:fallStar 1.7s ease-in forwards}
 
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition:none !important}
@@ -78,142 +69,159 @@
 </style>
 </head>
 <body>
-<div class="rays" aria-hidden="true"></div>
 <div id="pops" aria-hidden="true"></div>
 
 <main class="wrap">
-  <div class="moon-wrap" aria-hidden="true">
-    <svg width="86" height="86" viewBox="0 0 100 100" fill="none">
-      <path d="M68 8a38 38 0 1 0 24 52A30 30 0 0 1 68 8Z" fill="#FFE9A8" stroke="#FFD166" stroke-width="2"/>
-      <circle cx="38" cy="48" r="3" fill="#8a6a1c"/><path d="M52 58c3 2 7 2 10 0" stroke="#8a6a1c" stroke-width="2.5" stroke-linecap="round"/>
-      <ellipse cx="46" cy="55" rx="6" ry="3.5" fill="#FF9E7A" opacity=".65"/>
-    </svg>
-  </div>
+  <p class="kicker">Pour toi, sous les mêmes étoiles</p>
+  <h1>Bonne nuit,<br><span>mon cœur</span></h1>
+  <p class="subtitle">Ce soir, Paris s'endort doucement, la tour scintille, et quelque part sous ce même ciel, <strong>je pense à toi très fort</strong> avant que tu fermes les yeux.</p>
 
-  <p class="kicker">Pour ma petite sirène</p>
-  <h1>Bonne nuit,<br><span>ma sirène</span></h1>
-  <p class="subtitle">Tu as regardé Ariel aujourd'hui. Ce soir, c'est à ton tour de descendre sous l'océan : <strong>je t'y attends, avec des bisous qui remontent comme des bulles,</strong> un par un, jusqu'à toi.</p>
+  <section class="scene" id="sceneCard" aria-label="Paris la nuit : la tour Eiffel scintillante, les toits, la lune, et un petit chat sur un balcon">
+    <svg viewBox="0 0 580 340" role="img" aria-labelledby="sceneTitle sceneDesc">
+      <title id="sceneTitle">Paris la nuit</title>
+      <desc id="sceneDesc">La tour Eiffel scintille au-dessus des toits de Paris, sous une grande lune. Sur un balcon au premier plan, un petit chat noir regarde les étoiles, entouré de guirlandes lumineuses.</desc>
+      <defs>
+        <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffedb8" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#ffedb8" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="towerGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1b2348"/>
+          <stop offset="100%" stop-color="#0d1230"/>
+        </linearGradient>
+      </defs>
 
-  <section class="scene" aria-label="Une petite sirène sur son rocher, sous la lune, qui envoie des bisous bulles">
-    <svg viewBox="0 0 560 320" role="img" aria-labelledby="sceneTitle sceneDesc">
-      <title id="sceneTitle">Petite sirène sous l'océan</title>
-      <desc id="sceneDesc">Une sirène aux cheveux roux, assise sur un rocher au fond de la mer, envoie des bisous qui montent en bulles vers la lune. Des méduses lumineuses et des étoiles de mer l'entourent.</desc>
-      <!-- sea floor -->
-      <path d="M0 292 Q140 272 280 288 T560 290 L560 320 L0 320 Z" fill="#052238"/>
-      <!-- seaweed -->
-      <g stroke="#1d9e7a" stroke-width="7" fill="none" stroke-linecap="round">
-        <path d="M40 300 q-10 -40 4 -70 q12 -26 2 -52"/>
-        <path d="M66 302 q12 -34 -2 -62"/>
-        <path d="M512 300 q-12 -38 2 -66 q10 -22 0 -46"/>
-        <path d="M486 302 q10 -30 -4 -56"/>
-      </g>
-      <g stroke="#2bc493" stroke-width="5" fill="none" stroke-linecap="round">
-        <path d="M96 304 q-8 -26 2 -48"/>
-        <path d="M452 304 q8 -24 -2 -44"/>
-      </g>
-      <!-- starfish -->
-      <g fill="#ffb35c"><path d="M120 292l4 8 9 1-6.5 6 1.7 9-8.2-4.5-8.2 4.5 1.7-9-6.5-6 9-1z"/><path d="M438 296l3 6.4 7 .8-5.2 4.8 1.4 7-6.2-3.5-6.2 3.5 1.4-7-5.2-4.8 7-.8z"/></g>
-      <!-- jellyfish -->
-      <g class="jelly" opacity=".9">
-        <path d="M452 84 a20 15 0 0 1 40 0 z" fill="#ffb3e2"/>
-        <path d="M458 99 q3 12 -2 22 M472 100 q2 12 -2 20 M486 99 q3 10 -1 18" stroke="#ffb3e2" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <circle cx="465" cy="90" r="2.4" fill="#7a2b5e"/><circle cx="479" cy="90" r="2.4" fill="#7a2b5e"/>
-      </g>
-      <g class="jelly" opacity=".7" style="animation-delay:1.4s">
-        <path d="M66 120 a14 11 0 0 1 28 0 z" fill="#a8e6ff"/>
-        <path d="M71 131 q2 9 -1 16 M80 132 q2 8 -1 14 M89 131 q2 7 -1 13" stroke="#a8e6ff" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-      </g>
-      <!-- rock -->
-      <path d="M196 268 q14 -34 60 -38 l96 0 q44 4 56 38 q4 14 -12 16 l-184 0 q-18 -2 -16 -16z" fill="#3d5a73"/>
-      <path d="M196 268 q14 -34 60 -38 l96 0 q44 4 56 38 q2 8 -6 12 l-196 0 q-12 -4 -10 -12z" fill="#4a6c89"/>
+      <!-- moon -->
+      <circle cx="478" cy="58" r="52" fill="url(#moonGlow)"/>
+      <path d="M492 26a34 34 0 1 0 20 46A27 27 0 0 1 492 26Z" fill="#FFE9A8"/>
+      <circle cx="472" cy="52" r="2.6" fill="#8a6a1c"/><path d="M484 62c2.6 1.8 6 1.8 8.6 0" stroke="#8a6a1c" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+      <ellipse cx="478" cy="59" rx="5" ry="3" fill="#FF9E7A" opacity=".6"/>
 
-      <!-- mermaid -->
-      <g class="mermaid">
-        <!-- tail -->
-        <g class="tail">
-          <path d="M292 196 q44 10 58 44 q10 24 34 30 q-22 10 -40 0 q-8 14 -26 16 q4 -18 -4 -32 q-12 -22 -34 -34z" fill="#17b890"/>
-          <path d="M384 270 q14 -4 24 4 q-10 8 -24 6z" fill="#0e9c7c"/>
-          <path d="M318 286 q-4 -16 4 -32 q10 14 26 16 q-16 8 -30 16z" fill="#0e9c7c" transform="translate(-16 0)"/>
-          <g fill="#7ef0d4" opacity=".55"><circle cx="318" cy="222" r="4"/><circle cx="334" cy="238" r="4"/><circle cx="308" cy="240" r="3.4"/><circle cx="326" cy="256" r="3.4"/></g>
-        </g>
-        <!-- body -->
-        <path d="M272 150 q-4 26 6 48 l30 0 q8 -22 4 -48z" fill="#f6c79b"/>
-        <!-- shell top -->
-        <path d="M270 156 q10 -10 20 -2 q4 8 -2 14 q-12 4 -20 -4z" fill="#b388ff"/>
-        <path d="M296 154 q10 -8 20 2 q2 10 -6 14 q-12 2 -16 -6z" fill="#b388ff"/>
-        <!-- arms -->
-        <path d="M276 162 q-22 8 -28 26" stroke="#f6c79b" stroke-width="10" fill="none" stroke-linecap="round"/>
-        <path d="M312 162 q20 -2 30 -14" stroke="#f6c79b" stroke-width="10" fill="none" stroke-linecap="round"/>
-        <!-- hand blowing a kiss -->
-        <circle cx="346" cy="146" r="6.5" fill="#f6c79b"/>
-        <!-- head -->
-        <circle cx="293" cy="118" r="27" fill="#f9d3ac"/>
-        <!-- hair -->
-        <path d="M266 116 q-4 -34 27 -36 q32 2 28 36 q10 26 -2 44 q-4 -20 -10 -26 q4 18 -4 30 q-8 -16 -24 -18 q-12 10 -10 24 q-10 -22 -5 -54z" fill="#e8483f"/>
-        <path d="M272 96 q10 -12 24 -10" stroke="#ff7a6e" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <!-- starfish hair clip -->
-        <path d="M318 92l2.6 5.4 5.9.7-4.4 4 1.2 5.8-5.3-3-5.3 3 1.2-5.8-4.4-4 5.9-.7z" fill="#ffd166"/>
-        <!-- face -->
-        <path d="M280 118 q4 4 8 0 M298 118 q4 4 8 0" stroke="#5b3418" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-        <ellipse cx="293" cy="130" rx="4.4" ry="3" fill="#d94f3d"/>
-        <path d="M289 138 q4 3 8 0" stroke="#a83c2a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-        <ellipse cx="276" cy="128" rx="6" ry="3.6" fill="#ff9e8a" opacity=".8"/>
-        <ellipse cx="310" cy="128" rx="6" ry="3.6" fill="#ff9e8a" opacity=".8"/>
+      <!-- distant rooftops -->
+      <g fill="#141b3d">
+        <path d="M0 236 h70 l0 -26 14 -10 14 10 0 26 h60 l0 -18 12 -8 12 8 0 18 h398 v14 H0z"/>
       </g>
-      <!-- kiss bubbles from her hand -->
+      <g fill="#FFD98A">
+        <rect x="22" y="216" width="7" height="9" rx="1.5"/><rect x="48" y="220" width="7" height="9" rx="1.5" opacity=".7"/>
+        <rect x="118" y="222" width="7" height="9" rx="1.5" opacity=".85"/><rect x="540" y="218" width="7" height="9" rx="1.5"/>
+        <rect x="512" y="224" width="7" height="9" rx="1.5" opacity=".6"/>
+      </g>
+
+      <!-- Eiffel Tower -->
+      <g fill="url(#towerGrad)">
+        <path d="M290 18 L297 78 L306 128 L322 236 L306 236 C300 190 296 168 290 160 C284 168 280 190 274 236 L258 236 L274 128 L283 78 Z"/>
+        <rect x="270" y="122" width="40" height="7" rx="2"/>
+        <rect x="279" y="72" width="22" height="6" rx="2"/>
+        <rect x="252" y="230" width="76" height="8" rx="2"/>
+        <path d="M274 236 C280 206 284 192 290 186 C296 192 300 206 306 236 L296 236 C294 220 292 210 290 206 C288 210 286 220 284 236 Z" fill="#59386b" opacity=".85"/>
+        <circle cx="290" cy="14" r="3.4" fill="#FFD98A"/>
+      </g>
+      <!-- tower window lights -->
+      <g fill="#FFD98A" opacity=".9">
+        <circle cx="290" cy="96" r="1.8"/><circle cx="287" cy="140" r="1.8"/><circle cx="293" cy="168" r="1.8"/><circle cx="282" cy="196" r="1.8"/><circle cx="298" cy="200" r="1.8"/>
+      </g>
+      <!-- sparkle glints (lit by the button) -->
+      <g class="tower-glints" fill="#FFF6D8">
+        <circle cx="290" cy="30" r="2.4" style="animation-delay:.05s"/><circle cx="286" cy="58" r="2" style="animation-delay:.3s"/>
+        <circle cx="294" cy="84" r="2.3" style="animation-delay:.15s"/><circle cx="283" cy="112" r="2" style="animation-delay:.45s"/>
+        <circle cx="297" cy="126" r="2.2" style="animation-delay:.25s"/><circle cx="278" cy="152" r="2" style="animation-delay:.55s"/>
+        <circle cx="302" cy="158" r="2.3" style="animation-delay:.1s"/><circle cx="272" cy="188" r="2" style="animation-delay:.4s"/>
+        <circle cx="308" cy="192" r="2" style="animation-delay:.6s"/><circle cx="266" cy="216" r="2.2" style="animation-delay:.2s"/>
+        <circle cx="314" cy="220" r="2.2" style="animation-delay:.5s"/><circle cx="290" cy="140" r="2" style="animation-delay:.35s"/>
+      </g>
+
+      <!-- near rooftops with chimneys and lit windows -->
+      <g fill="#0a0f2a">
+        <path d="M0 262 l0 -34 26 -14 8 0 0 -10 10 0 0 12 30 12 0 34z"/>
+        <path d="M330 262 l0 -30 30 -13 10 0 0 -9 10 0 0 11 34 11 0 30z"/>
+        <path d="M414 262 l0 -24 24 -10 138 0 0 34z"/>
+        <rect x="96" y="238" width="12" height="16"/><rect x="470" y="230" width="12" height="16"/>
+      </g>
       <g>
-        <circle cx="366" cy="132" r="7" fill="rgba(190,240,255,.35)" stroke="rgba(220,250,255,.7)"/>
-        <text x="360" y="137" font-size="10">💋</text>
-        <circle cx="386" cy="106" r="9" fill="rgba(190,240,255,.3)" stroke="rgba(220,250,255,.65)"/>
-        <text x="379" y="111" font-size="13">💋</text>
-        <circle cx="410" cy="74" r="11" fill="rgba(190,240,255,.25)" stroke="rgba(220,250,255,.6)"/>
-        <text x="401" y="80" font-size="16">😘</text>
+        <rect x="18" y="238" width="9" height="12" rx="1.5" fill="#FFC46B"/>
+        <rect x="44" y="242" width="9" height="12" rx="1.5" fill="#FFD98A" opacity=".75"/>
+        <rect x="352" y="240" width="9" height="12" rx="1.5" fill="#FFC46B"/>
+        <rect x="382" y="244" width="9" height="12" rx="1.5" fill="#FFD98A" opacity=".6"/>
+        <rect x="440" y="242" width="9" height="12" rx="1.5" fill="#FFC46B"/>
+        <rect x="520" y="240" width="9" height="12" rx="1.5" fill="#FFD98A" opacity=".8"/>
+      </g>
+
+      <!-- balcony foreground -->
+      <g>
+        <rect x="0" y="300" width="580" height="40" fill="#05081a"/>
+        <rect x="0" y="296" width="580" height="7" rx="3" fill="#0a0f2a"/>
+        <g fill="#0a0f2a">
+          <rect x="26" y="296" width="6" height="34"/><rect x="86" y="296" width="6" height="34"/><rect x="146" y="296" width="6" height="34"/>
+          <rect x="206" y="296" width="6" height="34"/><rect x="266" y="296" width="6" height="34"/><rect x="326" y="296" width="6" height="34"/>
+          <rect x="386" y="296" width="6" height="34"/><rect x="446" y="296" width="6" height="34"/><rect x="506" y="296" width="6" height="34"/>
+        </g>
+        <!-- string lights on the railing -->
+        <path d="M0 300 Q145 322 290 306 T580 300" stroke="#2a2140" stroke-width="2" fill="none"/>
+        <g fill="#FFD98A" style="animation:lampGlow 3s ease-in-out infinite">
+          <circle cx="48" cy="307" r="4"/><circle cx="120" cy="312" r="4"/><circle cx="196" cy="311" r="4"/><circle cx="272" cy="307" r="4"/>
+          <circle cx="348" cy="307" r="4"/><circle cx="424" cy="310" r="4"/><circle cx="500" cy="306" r="4"/>
+        </g>
+        <g fill="#FFB3C8" opacity=".9" style="animation:lampGlow 3.6s ease-in-out infinite">
+          <circle cx="84" cy="311" r="3.4"/><circle cx="160" cy="313" r="3.4"/><circle cx="236" cy="309" r="3.4"/><circle cx="312" cy="306" r="3.4"/>
+          <circle cx="388" cy="309" r="3.4"/><circle cx="464" cy="308" r="3.4"/><circle cx="540" cy="303" r="3.4"/>
+        </g>
+        <!-- the cat, sitting on the railing, watching the tower -->
+        <g transform="translate(398 252)">
+          <path d="M10 44 q-2 -18 8 -26 q4 -12 16 -12 q13 0 17 12 q10 8 8 26 q-2 8 -12 8 l-26 0 q-9 0 -11 -8z" fill="#05081a"/>
+          <path d="M20 10 l-3 -12 l10 6z M48 10 l3 -12 l-10 6z" fill="#05081a"/>
+          <g class="tail"><path d="M56 46 q22 2 26 -14 q1 -8 -4 -12" stroke="#05081a" stroke-width="7" fill="none" stroke-linecap="round"/></g>
+          <circle cx="27" cy="24" r="1.8" fill="#FFE9A8"/><circle cx="41" cy="24" r="1.8" fill="#FFE9A8"/>
+        </g>
+        <!-- flower pot -->
+        <g transform="translate(96 268)">
+          <path d="M0 10 h34 l-5 22 h-24z" fill="#0a0f2a"/>
+          <g stroke="#123524" stroke-width="3" fill="none" stroke-linecap="round"><path d="M17 10 q0 -12 -8 -16 M17 10 q2 -13 12 -17 M17 10 q-1 -10 4 -18"/></g>
+          <circle cx="8" cy="-6" r="4.4" fill="#FF8FA3"/><circle cx="28" cy="-8" r="4.4" fill="#FFB3C1"/><circle cx="18" cy="-14" r="4.4" fill="#FF5D73"/>
+        </g>
       </g>
     </svg>
-    <p class="caption">Elle souffle ses bisous dans des bulles, et chaque bulle remonte jusqu'à la surface, <b>juste pour toi.</b></p>
+    <p class="caption">Un petit chat veille sur les toits, la tour scintille au loin, <b>et moi, je veille sur tes rêves.</b></p>
   </section>
 
   <div class="actions">
-    <button class="primary" id="kissBtn" type="button">Des bisous bulles 😘</button>
-    <button class="primary" id="hugBtn" type="button">Un câlin des profondeurs 🤗</button>
-    <button class="ghost" id="starsBtn" type="button">Fais un vœu ✨</button>
+    <button class="primary" id="kissBtn" type="button">Plein de bisous 😘</button>
+    <button class="primary" id="sparkleBtn" type="button">Fais scintiller la tour ✨</button>
+    <button class="ghost" id="noteBtn" type="button">Un mot doux 💌</button>
   </div>
-  <p class="note" id="wishNote" aria-live="polite">Dors bien, ma sirène. Ce soir, l'océan entier veille sur toi.</p>
-  <p class="small">Fait avec amour, juste pour toi, ce soir.<br>Ferme les yeux, écoute les vagues, et laisse la marée t'emporter dans tes rêves.</p>
+  <p class="note" id="wishNote" aria-live="polite">Dors bien, mon cœur. Je t'embrasse très fort, de loin mais de tout mon cœur.</p>
+  <p class="small">Fait avec amour, juste pour toi, ce soir.<br>Ferme les yeux, écoute la nuit, et laisse Paris te bercer.</p>
 </main>
 
 <script>
-  // stars only in the top strip (above the waterline)
+  // starfield
   (function(){
     var frag=document.createDocumentFragment();
-    for(var i=0;i<36;i++){
+    for(var i=0;i<80;i++){
       var s=document.createElement('span');
       s.className='star';
       s.style.left=(Math.random()*100)+'%';
-      s.style.top=(Math.random()*22)+'%';
-      var sz=(1.5+Math.random()*2.2);
+      s.style.top=(Math.random()*55)+'%';
+      var sz=(1.2+Math.random()*2.4);
       s.style.width=sz+'px'; s.style.height=sz+'px';
-      s.style.setProperty('--d',(2+Math.random()*3)+'s');
+      s.style.setProperty('--d',(2+Math.random()*3.5)+'s');
       s.style.animationDelay=(Math.random()*3)+'s';
       frag.appendChild(s);
     }
     document.body.appendChild(frag);
   })();
-  // ambient bubbles
+  // drifting clouds
   (function(){
-    var frag=document.createDocumentFragment();
-    for(var i=0;i<16;i++){
-      var b=document.createElement('span');
-      b.className='bubble';
-      var sz=(5+Math.random()*13);
-      b.style.width=sz+'px'; b.style.height=sz+'px';
-      b.style.left=(Math.random()*98)+'%';
-      b.style.setProperty('--t',(9+Math.random()*10)+'s');
-      b.style.setProperty('--x',((Math.random()*50)-25)+'px');
-      b.style.animationDelay=(-Math.random()*14)+'s';
-      frag.appendChild(b);
+    var shapes=['☁️','🌥️'];
+    for(var i=0;i<3;i++){
+      var c=document.createElement('span');
+      c.className='cloud';
+      c.textContent=shapes[i%2];
+      c.style.top=(4+i*9)+'%';
+      c.style.fontSize=(34+i*14)+'px';
+      c.style.setProperty('--t',(70+i*30)+'s');
+      c.style.animationDelay=(-i*26)+'s';
+      document.body.appendChild(c);
     }
-    document.body.appendChild(frag);
   })();
 
   function burst(n, set){
@@ -224,51 +232,56 @@
           var h=document.createElement('span');
           h.className='pop';
           h.textContent=set[Math.floor(Math.random()*set.length)];
-          h.style.left=(36+Math.random()*28)+'%';
-          h.style.setProperty('--x',((Math.random()*130)-65)+'px');
+          h.style.left=(34+Math.random()*32)+'%';
+          h.style.setProperty('--x',((Math.random()*140)-70)+'px');
           h.style.setProperty('--r',((Math.random()*40)-20)+'deg');
-          h.style.fontSize=(20+Math.random()*17)+'px';
+          h.style.fontSize=(20+Math.random()*18)+'px';
           layer.appendChild(h);
-          setTimeout(function(){h.remove()},2500);
+          setTimeout(function(){h.remove()},2600);
         }, i*90);
       })(i);
     }
   }
   var note=document.getElementById('wishNote');
   var bisous=[
-    'Une bulle, un bisou. Encore une bulle, encore un bisou. Il y en a plein qui montent vers toi.',
-    'Ce bisou-là a traversé tout l\u2019océan pour arriver jusqu\u2019à ta joue.',
-    'Les poissons se demandent pourquoi l\u2019eau est si douce ce soir. C\u2019est tous ces bisous.',
-    'Dernier bisou bulle de la nuit : il éclate tout doucement sur ton front. Bonne nuit, ma sirène.'
+    'Un bisou sur le front, pour chasser les mauvais rêves.',
+    'Un bisou sur le nez, parce qu\u2019il est beaucoup trop mignon.',
+    'Un bisou sur chaque joue, pour que tu t\u2019endormes avec le sourire.',
+    'Et le plus doux de tous, juste avant que tu t\u2019endormes. Bonne nuit, mon amour.'
   ];
   var bi=0;
   document.getElementById('kissBtn').addEventListener('click',function(){
-    burst(12,['😘','💋','🫧','💗']);
+    burst(13,['😘','💋','💗','💛']);
     note.textContent=bisous[bi % bisous.length];
     bi++;
   });
-  document.getElementById('hugBtn').addEventListener('click',function(){
-    burst(10,['🤗','💙','🫧','✨']);
-    note.textContent='Câlin reçu, tout chaud malgré l\u2019eau fraîche. Je te serre fort, même à des kilomètres.';
-  });
-  var wishes=[
-    'Vœu fait : une étoile est tombée dans la mer, rien que pour exaucer le tien.',
-    'Cette étoile t\u2019a entendue. Fais de beaux rêves, ma belle sirène.',
-    'Vœu scellé avec un bisou bulle. Il remonte déjà vers la surface.',
-    'Laisse-toi porter par les vagues maintenant : demain sera beau, comme toi.'
-  ];
-  var wi=0;
-  document.getElementById('starsBtn').addEventListener('click',function(){
+  document.getElementById('sparkleBtn').addEventListener('click',function(){
+    var card=document.getElementById('sceneCard');
+    card.classList.add('sparkling');
     var s=document.createElement('span');
     s.className='shooting';
     s.textContent='🌠';
     document.body.appendChild(s);
-    setTimeout(function(){s.remove()},1800);
-    burst(6,['✨','💛','🫧']);
-    note.textContent=wishes[wi % wishes.length];
-    wi++;
+    setTimeout(function(){s.remove()},1900);
+    burst(7,['✨','⭐','💛']);
+    note.textContent='Tu as vu ? La tour scintille rien que pour toi, comme à l\u2019heure pile. Fais un vœu en la regardant.';
+    setTimeout(function(){card.classList.remove('sparkling')},6000);
   });
-  setTimeout(function(){burst(6,['🫧','😘','💋'])},700);
+  var mots=[
+    'Tu es ma dernière pensée de la journée, et ma préférée.',
+    'Si je pouvais, je traverserais la nuit juste pour venir te border.',
+    'Quelque part sous les mêmes étoiles, quelqu\u2019un sourit en pensant à toi. C\u2019est moi.',
+    'Tu es plus belle que Paris la nuit, et ce n\u2019est vraiment pas peu dire.',
+    'Je t\u2019envoie un bisou qui traverse le ciel. Il arrive... maintenant.',
+    'Ferme les yeux, mon cœur. Je veille sur tes rêves, même de loin.'
+  ];
+  var mi=0;
+  document.getElementById('noteBtn').addEventListener('click',function(){
+    burst(5,['💌','💗','✨']);
+    note.textContent=mots[mi % mots.length];
+    mi++;
+  });
+  setTimeout(function(){burst(5,['✨','💗','😘'])},700);
 </script>
 </body>
 </html>
