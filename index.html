@@ -164,9 +164,10 @@
 
   <div class="actions">
     <button class="primary" id="hugBtn" type="button">Fais-moi un câlin 🤗</button>
+    <button class="primary" id="kissBtn" type="button">Plein de bisous 😘</button>
     <button class="ghost" id="starsBtn" type="button">Fais un vœu ✨</button>
   </div>
-  <p class="note" id="wishNote" aria-live="polite">Dors bien, mon cœur. Écris-moi quand tu seras bien installée.</p>
+  <p class="note" id="wishNote" aria-live="polite">Dors bien, mon cœur. Un bisou sur le front, un sur le nez, et un tout doux sur les lèvres. Écris-moi quand tu seras bien installée.</p>
   <p class="small">Fait avec amour, juste pour toi, ce soir.<br>Ferme les yeux, respire doucement, et laisse-toi glisser dans le sommeil.</p>
 </main>
 
@@ -191,9 +192,9 @@
     sky.appendChild(frag);
   })();
 
-  function burstHearts(n){
+  function burstHearts(n, set){
     var layer=document.getElementById('hearts');
-    var emojis=['💛','🧡','💗','✨','🌙'];
+    var emojis=set||['💛','🧡','💗','✨','🌙'];
     for(var i=0;i<(n||10);i++){
       (function(i){
         setTimeout(function(){
@@ -213,6 +214,18 @@
   document.getElementById('hugBtn').addEventListener('click',function(){
     burstHearts(14);
     document.getElementById('wishNote').textContent='Câlin reçu, et un autre rien que pour toi : chaud, tendre et tout doux.';
+  });
+  var bisous=[
+    'Un bisou sur le front, pour te protéger toute la nuit.',
+    'Un bisou sur le nez, parce qu\u2019il est trop mignon.',
+    'Un bisou sur chaque joue, pour que tu rêves de moi.',
+    'Et le dernier, tout doux, juste avant que tu t\u2019endormes. Bonne nuit, mon amour.'
+  ];
+  var bi=0;
+  document.getElementById('kissBtn').addEventListener('click',function(){
+    burstHearts(12,['😘','💋','💗','💛']);
+    document.getElementById('wishNote').textContent=bisous[bi % bisous.length];
+    bi++;
   });
   var wishes=[
     'Vœu fait : j\u2019ai souhaité que tu te réveilles avec le sourire.',
