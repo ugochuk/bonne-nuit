@@ -18,50 +18,53 @@
     overflow-x:hidden;
     min-height:100svh;
     position:relative;
-    background:linear-gradient(180deg,#070d24 0%, #131c42 34%, #2c2a5e 58%, #59386b 82%, #7a4a63 100%);
+    background:#141033;
   }
-  .star{position:fixed;border-radius:50%;background:#fff8e6;pointer-events:none;animation:twinkle var(--d) ease-in-out infinite alternate;z-index:0}
-  @keyframes twinkle{from{opacity:.15;transform:scale(.8)}to{opacity:1;transform:scale(1.2)}}
-  .cloud{position:fixed;pointer-events:none;z-index:1;opacity:.5;animation:drift var(--t) linear infinite}
-  @keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(115vw)}}
-  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-  @keyframes popFloat{0%{transform:translateY(0) scale(.6) rotate(0deg);opacity:0}15%{opacity:1}100%{transform:translateY(-150px) translateX(var(--x)) scale(1.15) rotate(var(--r));opacity:0}}
-  @keyframes glint{0%,100%{opacity:0}50%{opacity:1}}
-  @keyframes lampGlow{0%,100%{opacity:.75}50%{opacity:1}}
-  @keyframes fallStar{0%{transform:translate(0,0) rotate(0deg);opacity:0}10%{opacity:1}80%{opacity:1}100%{transform:translate(-52vw,30svh) rotate(-30deg);opacity:0}}
-  @keyframes tailFlick{0%,100%{transform:rotate(0deg)}50%{transform:rotate(6deg)}}
-  .tower-glints circle{opacity:0}
-  .sparkling .tower-glints circle{animation:glint .5s ease-in-out infinite}
-  .tail{transform-origin:0% 100%;animation:tailFlick 4s ease-in-out infinite}
+  /* painted hero */
+  .hero{position:relative;height:64svh;min-height:380px;overflow:hidden}
+  .hero img{
+    width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;
+    animation:kenburns 40s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns{from{transform:scale(1) translateY(0)}to{transform:scale(1.09) translateY(-1.5%)}}
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(10,8,32,.18) 0%, rgba(10,8,32,0) 30%, rgba(20,16,51,0) 55%, #141033 98%);
+  }
+  .sparkle{position:absolute;border-radius:50%;background:#ffeec2;pointer-events:none;animation:twinkle var(--d) ease-in-out infinite alternate;z-index:2;box-shadow:0 0 8px 2px rgba(255,238,194,.55)}
+  @keyframes twinkle{from{opacity:.1;transform:scale(.7)}to{opacity:1;transform:scale(1.25)}}
+  .firefly{position:absolute;width:5px;height:5px;border-radius:50%;background:#ffd98a;box-shadow:0 0 10px 3px rgba(255,217,138,.6);pointer-events:none;z-index:2;animation:fly var(--t) ease-in-out infinite alternate}
+  @keyframes fly{from{transform:translate(0,0);opacity:.35}to{transform:translate(var(--x),var(--y));opacity:1}}
 
-  .wrap{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:26px 20px 38px;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-  .kicker{letter-spacing:.2em;text-transform:uppercase;font-size:11px;font-weight:700;color:#ffd9a0;opacity:.95}
-  h1{font-family:"Caveat",cursive;font-size:clamp(56px,13vw,92px);line-height:.92;margin:10px 0 6px;font-weight:700;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.35)}
+  .wrap{position:relative;z-index:3;max-width:640px;margin:-52px auto 0;padding:0 20px 40px;text-align:center}
+  .kicker{letter-spacing:.2em;text-transform:uppercase;font-size:11px;font-weight:700;color:#ffd9a0}
+  h1{font-family:"Caveat",cursive;font-size:clamp(58px,14vw,94px);line-height:.92;margin:8px 0 8px;font-weight:700;color:#fff;text-shadow:0 4px 34px rgba(0,0,0,.5)}
   h1 span{color:#ffb3c8}
-  .subtitle{font-size:clamp(17px,4.4vw,21px);line-height:1.5;color:#f3e9ff;font-weight:500;max-width:500px;margin:0 auto}
+  .subtitle{font-size:clamp(17px,4.4vw,21px);line-height:1.55;color:#efe8ff;font-weight:500;max-width:500px;margin:0 auto}
   .subtitle strong{color:#fff}
 
-  .scene{
-    margin-top:24px;width:min(580px,100%);border-radius:28px;padding:10px 10px 4px;
-    background:linear-gradient(180deg, rgba(10,14,40,.25), rgba(10,10,30,.45));
-    border:1px solid rgba(255,220,170,.25);
-    backdrop-filter:blur(4px);box-shadow:0 24px 60px rgba(0,0,0,.45);
+  .card{
+    margin:24px auto 0;max-width:520px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,220,170,.22);
+    border-radius:24px;padding:18px 20px;backdrop-filter:blur(8px);
+    box-shadow:0 18px 44px rgba(0,0,0,.35);
   }
-  .scene svg{width:100%;height:auto;display:block}
-  .caption{font-size:14px;color:#e8d9ff;padding:4px 12px 12px;line-height:1.5}
-  .caption b{color:#ffe9a8}
+  .card p{margin:0;font-size:16px;line-height:1.6;color:#f6efff}
+  .card p b{color:#ffe9a8}
 
-  .actions{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center}
+  .actions{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center}
   button{min-height:48px;border:0;cursor:pointer;border-radius:999px;padding:0 22px;font-family:inherit;font-weight:700;font-size:16px}
   .primary{background:linear-gradient(135deg,#ffd166,#ffb3c8);color:#4a1430;box-shadow:0 8px 26px rgba(255,179,200,.4)}
   .primary:active{transform:scale(.97)}
   .ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
   .note{margin-top:18px;font-family:"Caveat",cursive;font-size:27px;color:#ffe9c2;line-height:1.25;min-height:36px}
-  .small{margin-top:20px;font-size:13px;color:#c3b2dd;line-height:1.5}
+  .small{margin-top:20px;font-size:13px;color:#b7a8d8;line-height:1.5}
 
-  #pops{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
-  .pop{position:absolute;bottom:22%;animation:popFloat 2.4s ease-out forwards;text-shadow:0 0 14px rgba(255,180,200,.8)}
-  .shooting{position:fixed;top:5%;right:-4%;font-size:26px;z-index:4;pointer-events:none;animation:fallStar 1.7s ease-in forwards}
+  #pops{position:fixed;inset:0;pointer-events:none;z-index:6;overflow:hidden}
+  .pop{position:absolute;bottom:20%;animation:popFloat 2.4s ease-out forwards;text-shadow:0 0 14px rgba(255,180,200,.8)}
+  @keyframes popFloat{0%{transform:translateY(0) scale(.6) rotate(0deg);opacity:0}15%{opacity:1}100%{transform:translateY(-160px) translateX(var(--x)) scale(1.15) rotate(var(--r));opacity:0}}
+  .shooting{position:fixed;top:6%;right:-4%;font-size:26px;z-index:5;pointer-events:none;animation:fallStar 1.7s ease-in forwards}
+  @keyframes fallStar{0%{transform:translate(0,0) rotate(0deg);opacity:0}10%{opacity:1}80%{opacity:1}100%{transform:translate(-55vw,26svh) rotate(-30deg);opacity:0}}
 
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition:none !important}
@@ -69,158 +72,55 @@
 </style>
 </head>
 <body>
+<div class="hero" id="hero">
+  <img src="nuit.jpg" alt="Un ciel étoilé tourbillonnant au-dessus de champs de lavande, avec une petite maison à la fenêtre allumée et un chemin de lumière" />
+</div>
 <div id="pops" aria-hidden="true"></div>
 
 <main class="wrap">
-  <p class="kicker">Pour toi, sous les mêmes étoiles</p>
+  <p class="kicker">Pour toi, avant de t'endormir</p>
   <h1>Bonne nuit,<br><span>mon cœur</span></h1>
-  <p class="subtitle">Ce soir, Paris s'endort doucement, la tour scintille, et quelque part sous ce même ciel, <strong>je pense à toi très fort</strong> avant que tu fermes les yeux.</p>
+  <p class="subtitle">Il y a un petit chemin de lumière qui traverse les champs de lavande et monte jusqu'aux étoiles. <strong>Ce soir, tous mes bisous le prennent pour venir jusqu'à toi.</strong></p>
 
-  <section class="scene" id="sceneCard" aria-label="Paris la nuit : la tour Eiffel scintillante, les toits, la lune, et un petit chat sur un balcon">
-    <svg viewBox="0 0 580 340" role="img" aria-labelledby="sceneTitle sceneDesc">
-      <title id="sceneTitle">Paris la nuit</title>
-      <desc id="sceneDesc">La tour Eiffel scintille au-dessus des toits de Paris, sous une grande lune. Sur un balcon au premier plan, un petit chat noir regarde les étoiles, entouré de guirlandes lumineuses.</desc>
-      <defs>
-        <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#ffedb8" stop-opacity=".55"/>
-          <stop offset="100%" stop-color="#ffedb8" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="towerGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#1b2348"/>
-          <stop offset="100%" stop-color="#0d1230"/>
-        </linearGradient>
-      </defs>
-
-      <!-- moon -->
-      <circle cx="478" cy="58" r="52" fill="url(#moonGlow)"/>
-      <path d="M492 26a34 34 0 1 0 20 46A27 27 0 0 1 492 26Z" fill="#FFE9A8"/>
-      <circle cx="472" cy="52" r="2.6" fill="#8a6a1c"/><path d="M484 62c2.6 1.8 6 1.8 8.6 0" stroke="#8a6a1c" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <ellipse cx="478" cy="59" rx="5" ry="3" fill="#FF9E7A" opacity=".6"/>
-
-      <!-- distant rooftops -->
-      <g fill="#141b3d">
-        <path d="M0 236 h70 l0 -26 14 -10 14 10 0 26 h60 l0 -18 12 -8 12 8 0 18 h398 v14 H0z"/>
-      </g>
-      <g fill="#FFD98A">
-        <rect x="22" y="216" width="7" height="9" rx="1.5"/><rect x="48" y="220" width="7" height="9" rx="1.5" opacity=".7"/>
-        <rect x="118" y="222" width="7" height="9" rx="1.5" opacity=".85"/><rect x="540" y="218" width="7" height="9" rx="1.5"/>
-        <rect x="512" y="224" width="7" height="9" rx="1.5" opacity=".6"/>
-      </g>
-
-      <!-- Eiffel Tower -->
-      <g fill="url(#towerGrad)">
-        <path d="M290 18 L297 78 L306 128 L322 236 L306 236 C300 190 296 168 290 160 C284 168 280 190 274 236 L258 236 L274 128 L283 78 Z"/>
-        <rect x="270" y="122" width="40" height="7" rx="2"/>
-        <rect x="279" y="72" width="22" height="6" rx="2"/>
-        <rect x="252" y="230" width="76" height="8" rx="2"/>
-        <path d="M274 236 C280 206 284 192 290 186 C296 192 300 206 306 236 L296 236 C294 220 292 210 290 206 C288 210 286 220 284 236 Z" fill="#59386b" opacity=".85"/>
-        <circle cx="290" cy="14" r="3.4" fill="#FFD98A"/>
-      </g>
-      <!-- tower window lights -->
-      <g fill="#FFD98A" opacity=".9">
-        <circle cx="290" cy="96" r="1.8"/><circle cx="287" cy="140" r="1.8"/><circle cx="293" cy="168" r="1.8"/><circle cx="282" cy="196" r="1.8"/><circle cx="298" cy="200" r="1.8"/>
-      </g>
-      <!-- sparkle glints (lit by the button) -->
-      <g class="tower-glints" fill="#FFF6D8">
-        <circle cx="290" cy="30" r="2.4" style="animation-delay:.05s"/><circle cx="286" cy="58" r="2" style="animation-delay:.3s"/>
-        <circle cx="294" cy="84" r="2.3" style="animation-delay:.15s"/><circle cx="283" cy="112" r="2" style="animation-delay:.45s"/>
-        <circle cx="297" cy="126" r="2.2" style="animation-delay:.25s"/><circle cx="278" cy="152" r="2" style="animation-delay:.55s"/>
-        <circle cx="302" cy="158" r="2.3" style="animation-delay:.1s"/><circle cx="272" cy="188" r="2" style="animation-delay:.4s"/>
-        <circle cx="308" cy="192" r="2" style="animation-delay:.6s"/><circle cx="266" cy="216" r="2.2" style="animation-delay:.2s"/>
-        <circle cx="314" cy="220" r="2.2" style="animation-delay:.5s"/><circle cx="290" cy="140" r="2" style="animation-delay:.35s"/>
-      </g>
-
-      <!-- near rooftops with chimneys and lit windows -->
-      <g fill="#0a0f2a">
-        <path d="M0 262 l0 -34 26 -14 8 0 0 -10 10 0 0 12 30 12 0 34z"/>
-        <path d="M330 262 l0 -30 30 -13 10 0 0 -9 10 0 0 11 34 11 0 30z"/>
-        <path d="M414 262 l0 -24 24 -10 138 0 0 34z"/>
-        <rect x="96" y="238" width="12" height="16"/><rect x="470" y="230" width="12" height="16"/>
-      </g>
-      <g>
-        <rect x="18" y="238" width="9" height="12" rx="1.5" fill="#FFC46B"/>
-        <rect x="44" y="242" width="9" height="12" rx="1.5" fill="#FFD98A" opacity=".75"/>
-        <rect x="352" y="240" width="9" height="12" rx="1.5" fill="#FFC46B"/>
-        <rect x="382" y="244" width="9" height="12" rx="1.5" fill="#FFD98A" opacity=".6"/>
-        <rect x="440" y="242" width="9" height="12" rx="1.5" fill="#FFC46B"/>
-        <rect x="520" y="240" width="9" height="12" rx="1.5" fill="#FFD98A" opacity=".8"/>
-      </g>
-
-      <!-- balcony foreground -->
-      <g>
-        <rect x="0" y="300" width="580" height="40" fill="#05081a"/>
-        <rect x="0" y="296" width="580" height="7" rx="3" fill="#0a0f2a"/>
-        <g fill="#0a0f2a">
-          <rect x="26" y="296" width="6" height="34"/><rect x="86" y="296" width="6" height="34"/><rect x="146" y="296" width="6" height="34"/>
-          <rect x="206" y="296" width="6" height="34"/><rect x="266" y="296" width="6" height="34"/><rect x="326" y="296" width="6" height="34"/>
-          <rect x="386" y="296" width="6" height="34"/><rect x="446" y="296" width="6" height="34"/><rect x="506" y="296" width="6" height="34"/>
-        </g>
-        <!-- string lights on the railing -->
-        <path d="M0 300 Q145 322 290 306 T580 300" stroke="#2a2140" stroke-width="2" fill="none"/>
-        <g fill="#FFD98A" style="animation:lampGlow 3s ease-in-out infinite">
-          <circle cx="48" cy="307" r="4"/><circle cx="120" cy="312" r="4"/><circle cx="196" cy="311" r="4"/><circle cx="272" cy="307" r="4"/>
-          <circle cx="348" cy="307" r="4"/><circle cx="424" cy="310" r="4"/><circle cx="500" cy="306" r="4"/>
-        </g>
-        <g fill="#FFB3C8" opacity=".9" style="animation:lampGlow 3.6s ease-in-out infinite">
-          <circle cx="84" cy="311" r="3.4"/><circle cx="160" cy="313" r="3.4"/><circle cx="236" cy="309" r="3.4"/><circle cx="312" cy="306" r="3.4"/>
-          <circle cx="388" cy="309" r="3.4"/><circle cx="464" cy="308" r="3.4"/><circle cx="540" cy="303" r="3.4"/>
-        </g>
-        <!-- the cat, sitting on the railing, watching the tower -->
-        <g transform="translate(398 252)">
-          <path d="M10 44 q-2 -18 8 -26 q4 -12 16 -12 q13 0 17 12 q10 8 8 26 q-2 8 -12 8 l-26 0 q-9 0 -11 -8z" fill="#05081a"/>
-          <path d="M20 10 l-3 -12 l10 6z M48 10 l3 -12 l-10 6z" fill="#05081a"/>
-          <g class="tail"><path d="M56 46 q22 2 26 -14 q1 -8 -4 -12" stroke="#05081a" stroke-width="7" fill="none" stroke-linecap="round"/></g>
-          <circle cx="27" cy="24" r="1.8" fill="#FFE9A8"/><circle cx="41" cy="24" r="1.8" fill="#FFE9A8"/>
-        </g>
-        <!-- flower pot -->
-        <g transform="translate(96 268)">
-          <path d="M0 10 h34 l-5 22 h-24z" fill="#0a0f2a"/>
-          <g stroke="#123524" stroke-width="3" fill="none" stroke-linecap="round"><path d="M17 10 q0 -12 -8 -16 M17 10 q2 -13 12 -17 M17 10 q-1 -10 4 -18"/></g>
-          <circle cx="8" cy="-6" r="4.4" fill="#FF8FA3"/><circle cx="28" cy="-8" r="4.4" fill="#FFB3C1"/><circle cx="18" cy="-14" r="4.4" fill="#FF5D73"/>
-        </g>
-      </g>
-    </svg>
-    <p class="caption">Un petit chat veille sur les toits, la tour scintille au loin, <b>et moi, je veille sur tes rêves.</b></p>
-  </section>
+  <div class="card">
+    <p>Ferme les yeux et imagine : la lavande parfume la nuit, la lune veille sur la maison, et <b>quelqu'un, très loin mais tout près en pensée, te souhaite la plus douce des nuits.</b></p>
+  </div>
 
   <div class="actions">
     <button class="primary" id="kissBtn" type="button">Plein de bisous 😘</button>
-    <button class="primary" id="sparkleBtn" type="button">Fais scintiller la tour ✨</button>
-    <button class="ghost" id="noteBtn" type="button">Un mot doux 💌</button>
+    <button class="primary" id="noteBtn" type="button">Un mot doux 💌</button>
+    <button class="ghost" id="wishBtn" type="button">Fais un vœu 🌠</button>
   </div>
   <p class="note" id="wishNote" aria-live="polite">Dors bien, mon cœur. Je t'embrasse très fort, de loin mais de tout mon cœur.</p>
-  <p class="small">Fait avec amour, juste pour toi, ce soir.<br>Ferme les yeux, écoute la nuit, et laisse Paris te bercer.</p>
+  <p class="small">Fait avec amour, juste pour toi, ce soir.<br>Respire le parfum de la lavande, écoute le silence, et laisse la nuit te bercer.</p>
 </main>
 
 <script>
-  // starfield
+  // sparkles + fireflies over the painting
   (function(){
-    var frag=document.createDocumentFragment();
-    for(var i=0;i<80;i++){
-      var s=document.createElement('span');
-      s.className='star';
-      s.style.left=(Math.random()*100)+'%';
-      s.style.top=(Math.random()*55)+'%';
-      var sz=(1.2+Math.random()*2.4);
-      s.style.width=sz+'px'; s.style.height=sz+'px';
-      s.style.setProperty('--d',(2+Math.random()*3.5)+'s');
-      s.style.animationDelay=(Math.random()*3)+'s';
-      frag.appendChild(s);
+    var hero=document.getElementById('hero');
+    var i, el;
+    for(i=0;i<26;i++){
+      el=document.createElement('span');
+      el.className='sparkle';
+      el.style.left=(Math.random()*100)+'%';
+      el.style.top=(Math.random()*52)+'%';
+      var sz=(1.6+Math.random()*2.6);
+      el.style.width=sz+'px'; el.style.height=sz+'px';
+      el.style.setProperty('--d',(1.8+Math.random()*3)+'s');
+      el.style.animationDelay=(Math.random()*3)+'s';
+      hero.appendChild(el);
     }
-    document.body.appendChild(frag);
-  })();
-  // drifting clouds
-  (function(){
-    var shapes=['☁️','🌥️'];
-    for(var i=0;i<3;i++){
-      var c=document.createElement('span');
-      c.className='cloud';
-      c.textContent=shapes[i%2];
-      c.style.top=(4+i*9)+'%';
-      c.style.fontSize=(34+i*14)+'px';
-      c.style.setProperty('--t',(70+i*30)+'s');
-      c.style.animationDelay=(-i*26)+'s';
-      document.body.appendChild(c);
+    for(i=0;i<10;i++){
+      el=document.createElement('span');
+      el.className='firefly';
+      el.style.left=(8+Math.random()*84)+'%';
+      el.style.top=(58+Math.random()*36)+'%';
+      el.style.setProperty('--t',(3+Math.random()*4)+'s');
+      el.style.setProperty('--x',((Math.random()*36)-18)+'px');
+      el.style.setProperty('--y',((Math.random()*22)-16)+'px');
+      el.style.animationDelay=(Math.random()*3)+'s';
+      hero.appendChild(el);
     }
   })();
 
@@ -255,24 +155,12 @@
     note.textContent=bisous[bi % bisous.length];
     bi++;
   });
-  document.getElementById('sparkleBtn').addEventListener('click',function(){
-    var card=document.getElementById('sceneCard');
-    card.classList.add('sparkling');
-    var s=document.createElement('span');
-    s.className='shooting';
-    s.textContent='🌠';
-    document.body.appendChild(s);
-    setTimeout(function(){s.remove()},1900);
-    burst(7,['✨','⭐','💛']);
-    note.textContent='Tu as vu ? La tour scintille rien que pour toi, comme à l\u2019heure pile. Fais un vœu en la regardant.';
-    setTimeout(function(){card.classList.remove('sparkling')},6000);
-  });
   var mots=[
     'Tu es ma dernière pensée de la journée, et ma préférée.',
-    'Si je pouvais, je traverserais la nuit juste pour venir te border.',
+    'Si je pouvais, je suivrais ce petit chemin de lumière juste pour venir te border.',
     'Quelque part sous les mêmes étoiles, quelqu\u2019un sourit en pensant à toi. C\u2019est moi.',
-    'Tu es plus belle que Paris la nuit, et ce n\u2019est vraiment pas peu dire.',
-    'Je t\u2019envoie un bisou qui traverse le ciel. Il arrive... maintenant.',
+    'Tu es plus belle que ce ciel étoilé, et ce n\u2019est vraiment pas peu dire.',
+    'Je t\u2019envoie un bisou qui traverse la nuit. Il arrive... maintenant.',
     'Ferme les yeux, mon cœur. Je veille sur tes rêves, même de loin.'
   ];
   var mi=0;
@@ -280,6 +168,23 @@
     burst(5,['💌','💗','✨']);
     note.textContent=mots[mi % mots.length];
     mi++;
+  });
+  var wishes=[
+    'Vœu fait : cette étoile filante l\u2019a emporté tout droit vers la lune.',
+    'Ton vœu est en route. Fais de beaux rêves, ma belle.',
+    'Vœu scellé avec un bisou. Il brille déjà parmi les étoiles.',
+    'Laisse-toi aller maintenant : demain sera beau, comme toi.'
+  ];
+  var wi=0;
+  document.getElementById('wishBtn').addEventListener('click',function(){
+    var s=document.createElement('span');
+    s.className='shooting';
+    s.textContent='🌠';
+    document.body.appendChild(s);
+    setTimeout(function(){s.remove()},1900);
+    burst(6,['✨','⭐','💛']);
+    note.textContent=wishes[wi % wishes.length];
+    wi++;
   });
   setTimeout(function(){burst(5,['✨','💗','😘'])},700);
 </script>
